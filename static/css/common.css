@@ -1,0 +1,12 @@
+/**
+ * Created by Administrator on 2015/7/14.
+ */
+@charset "utf-8";
+
+body{
+    overflow: hidden;
+}
+.section{
+    height: 100%;
+    width: 100%;
+}
