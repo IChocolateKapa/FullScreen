@@ -1,0 +1,63 @@
+/**
+ * Created by Administrator on 2015/7/17.
+ */
+@charset "utf-8";
+html, body{
+    height: 100%;
+    overflow: hidden;
+}
+
+.container,
+.section{
+    height: 100%;
+    float: left;
+}
+.container{
+    width: 900%;
+}
+.section{
+    width: 10%;
+    background: pink;
+    background-size: auto;
+    -webkit-transition: .5s linear;
+    -moz-transition: .5s linear ;
+    -ms-transition: .5s linear ;
+    -o-transition: .5s linear ;
+    transition: .5s linear ;
+}
+#section0{
+    background: url('../images/0.jpg') no-repeat;
+}
+#section1{
+    background: url('../images/1.jpg') no-repeat;
+}
+#section2{
+    background: url('../images/2.jpg') no-repeat;
+}
+#section3{
+    background: url('../images/3.jpg') no-repeat;
+}
+#section4{
+    background: url('../images/4.jpg') no-repeat;
+}
+#section5{
+    background: url('../images/5.jpg') no-repeat;
+}
+#section6{
+    background: url('../images/6.jpg') no-repeat;
+}
+#section7{
+    background: url('../images/7.jpg') no-repeat;
+}
+#section8{
+    background: url('../images/8.jpg') no-repeat;
+}
+#section9{
+    background: url('../images/9.jpg') no-repeat;
+}
+#section10{
+    background: url('../images/10.jpg') no-repeat;
+}
+#section11{
+    background: url('../images/11.jpg') no-repeat;
+}

@@ -1,34 +1,31 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ><!--ng-app-->
 <head lang="en"><!--告诉引擎从这里开始Angular-->
     <meta charset="UTF-8">
     <title>全屏切换Demo</title>
     <link rel="stylesheet" href="../static/css/base.css"/>
     <link rel="stylesheet" href="../static/css/common.css"/>
-    <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+    <link rel="stylesheet" href="../static/css/page_index.css"/>
+    <!--<script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>-->
     <script src="../static/js/org/jquery-2.1.3.min.js"></script>
-    <!--<script src="../static/js/org/angular.min.js"></script>-->
     <script src="../static/js/module/index.js"></script>
 </head>
 <body>
-    <!--<div class="section" id="{{index}}"></div>-->
-    <div ng-controller="HelloAngular">
-        <p>{{greeting.text}}, Angular</p>
-        <p>{{word}}</p>
-        <ul ng-controller="listCtl">
-            <li ng-repeat="nam in names">
-                {{ nam }} lives in {{word}}<!--这样还是可以找到上层的word的-->
-            </li>
-        </ul>
+    <div class="container"><!-- ng-controller="imgList"-->
+        <!--<div class="section h_100 w_100 fl" id="section{{img}}" ng-repeat="img in imgs"></div>-->
+        <div class="section" id="section1"></div>
+        <div class="section" id="section2"></div>
+        <div class="section" id="section3"></div>
+        <div class="section" id="section4"></div>
+        <div class="section" id="section5"></div>
+        <div class="section" id="section6"></div>
+        <div class="section" id="section7"></div>
+        <div class="section" id="section8"></div>
+        <div class="section" id="section9"></div>
+        <div class="section" id="section10"></div>
+        <div class="section" id="section11"></div>
     </div>
 
-    <ul ng-controller="listCtl">
-        <li ng-repeat="nam in names">
-            {{ nam }} lives in {{word}}<!--这样就找不到word了-->
-        </li>
-    </ul>
 
-    <input type="text" ng-model="price" placeholder="价格">
-    <span>{{price}}</span>
 </body>
 </html>

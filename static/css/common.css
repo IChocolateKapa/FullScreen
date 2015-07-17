@@ -3,10 +3,3 @@
  */
 @charset "utf-8";
 
-body{
-    overflow: hidden;
-}
-.section{
-    height: 100%;
-    width: 100%;
-}
