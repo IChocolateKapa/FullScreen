@@ -34,14 +34,3 @@ $.fn.foo = function(){
 
 };
 /*’‚¿Ô$.fn === $.prototype*/
-
-
-
-/*Angular controller*/
-function imgList($scope){
-    $scope.imgs = new Array();
-    for(var i = 0; i < 13; i++){
-        $scope.imgs.push(i);
-    }
-    console.log($scope.imgs);
-}

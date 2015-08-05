@@ -1,0 +1,33 @@
+/**
+ * Created by Administrator on 2015/8/5.
+ */
+@charset "utf-8";
+.container{
+    column-width: 277px;
+    -webkit-column-width: 277px;
+    -moz-column-width: 277px;
+    -ms-column-width: 277px;
+    -o-column-width: 277px;
+    column-gap: 5px;
+    -webkit-column-gap: 5px;
+    -moz-column-gap: 5px;
+    -ms-column-gap: 5px;
+    -o-column-gap: 5px;
+}
+.section{
+    padding: 10px 0 0 15px;
+}
+
+.pic{
+    width: 240px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px dashed #ccc;
+    box-shadow: 0 0 5px #999;
+}
+
+.pic img{
+    display: block;
+    width: 240px;
+    height: auto;
+}

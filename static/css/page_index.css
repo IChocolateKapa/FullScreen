@@ -4,7 +4,7 @@
 @charset "utf-8";
 html, body{
     height: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .container,
@@ -13,7 +13,7 @@ html, body{
     float: left;
 }
 .container{
-    width: 900%;
+    width: 1200%;
 }
 .section{
     width: 10%;
