@@ -1,0 +1,24 @@
+/**
+ * Created by Administrator on 2015/8/7.
+ */
+@charset "utf-8";
+.main{
+    width: 1210px;
+    height: 768px;
+}
+div{
+
+    /*box-shadow: 0 0 50px 50px #e5e5e5;*/
+}
+.mapCanvas,
+.sideBar{
+    border-radius: 5px;
+    /*border: 1px #e5e5e5 solid;*/
+}
+.mapCanvas{
+    width: 80%;
+}
+.sideBar{
+    border: 1px #e5e5e5 solid;
+    width: 19.8%;
+}
