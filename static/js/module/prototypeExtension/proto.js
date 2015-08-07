@@ -2,9 +2,9 @@
  * Created by Administrator on 2015/8/7.
  */
 
-/*Ñ§Ï°¸ø¶ÔÏó·â×°Ô­ĞÍ·½·¨*/
+/*å­¦ä¹ ç»™å¯¹è±¡å°è£…åŸå‹æ–¹æ³•*/
 
-/*»ñÈ¡Êı×éÖĞ×î´óµÄÊı×Ö*/
+/*è·å–æ•°ç»„ä¸­æœ€å¤§çš„æ•°å­—*/
 Array.prototype.getMax = function(){
     var arr = this;
     var maxN = arr[0];
@@ -15,7 +15,14 @@ Array.prototype.getMax = function(){
     }
     return maxN;
 }
+Array.prototype.removeEle = function(ele){
 
+    var arr = this;
+    alert(arr);
+    this.pop(ele);
+    console.log(arr);
+    return arr;
+}
 
 var Person = function(name, sex, age){
     this.name = name;
@@ -23,7 +30,7 @@ var Person = function(name, sex, age){
     this.age = age;
 };
 Person.prototype.getDetail = function(){
-    var outPut =  this.sex==="ÄĞ"? "boy": "girl";
+    var outPut =  this.sex==="ç”·"? "boy": "girl";
     return ("This is a " +  outPut + " named " + this.name + " aged " + this.age);
 }
 

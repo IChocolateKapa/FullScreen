@@ -12,6 +12,9 @@ GLOBAL_MapParams.markerAddr = "北京";
 GLOBAL_MapParams.mapZoom = 12.0;
 GLOBAL_MapParams.mapType = google.maps.MapTypeId.ROADMAP;
 GLOBAL_MapParams.rectArray = new Array();
+GLOBAL_MapParams.circleArray = new Array();
+GLOBAL_MapParams.polylineArray = new Array();
+GLOBAL_MapParams.markerArray = new Array();
 
 
 
@@ -198,4 +201,5 @@ var MAP = {
 
 
 }
+
 
