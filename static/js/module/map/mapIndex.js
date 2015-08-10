@@ -1,14 +1,10 @@
 /**
- * Created by Administrator on 2015/8/7.
+ * Created by Echo on 2015/8/10.
  */
 
+define(function () {
 
-define(['jquery'], function ($) {
-
-    GLOBAL_MapParams.addrId = "address";
-    GLOBAL_MapParams.mapId = "mapCanvas";
-
-    function initialize(flag){
+    function initialize2(flag){
 
         GLOBAL_MapParams.geocoder = MAP.initGeocoder();
 
@@ -70,7 +66,7 @@ define(['jquery'], function ($) {
                 strokeColor: '#00b04a',
                 strokeWeight: 3,
                 draggable: true/*,
-                 editable:　false*/
+                editable:　false*/
             },
             /*circleOptions: {
              fillColor: "rgba(234, 45, 134, .6)",
@@ -131,22 +127,8 @@ define(['jquery'], function ($) {
 
     }
 
-    google.maps.event.addDomListener(window, 'load', function(){
-        initialize(true);
-    });
-
-    /*刷新地图*/
-    $("#refresh").click(function () {
-        initialize(true);
-        MAP.setCusMap(GLOBAL_MapParams.rectArray, GLOBAL_MapParams.map);
-        MAP.setCusMap(GLOBAL_MapParams.polylineArray, GLOBAL_MapParams.map);
-        MAP.setCusMap(GLOBAL_MapParams.markerArray, GLOBAL_MapParams.map);
-    })
+    return {
+        "fm": initialize
+    }
 
 })
-
-function searchKeyPress(event){
-    eventUtil.enterKeyPress(event, function(){
-        MAP.codeAddress(GLOBAL_MapParams.geocoder, GLOBAL_MapParams.map, GLOBAL_MapParams.addrId);
-    });
-}

@@ -19,8 +19,8 @@ Array.prototype.removeEle = function(ele){
 
     var arr = this;
     alert(arr);
+    alert(ele)
     this.pop(ele);
-    console.log(arr);
     return arr;
 }
 

@@ -15,7 +15,7 @@ th, td{
 }
 
 
-/*Œƒ◊÷≈≈∞Ê*/
+/*ÊñáÂ≠óÊéíÁâà*/
 .f12{font-size: 12px;}
 .f13{font-size: 13px;}
 .f14{font-size: 14px;}
@@ -35,7 +35,7 @@ th, td{
 .ffTm{font-family: 'tahoma'}
 .fcWhite{color: white}
 .fc375c84{color: #375c84}
-.fc209599{color: #209599}
+.fc209599{color: #209599 !important;}
 .fc22aabb{color: #22AABB}
 .fc657384{color: #657384;}
 .fcff9d28{color: #FFD928;}
@@ -48,6 +48,7 @@ th, td{
 .fcc2a5b2{color: #c2a5b2;}
 .fb{font-weight: bold;}
 .fn{font-weight: normal;}
+.fstn{font-style: normal;}
 .t2{text-indent: 2em;}
 .lh16{line-height: 16px;}
 .lh27{line-height: 27px;}
@@ -58,7 +59,7 @@ th, td{
 .no_unl{text-decoration: none;}
 
 
-/*∂®Œª*/
+/*ÂÆö‰Ωç*/
 .tl{text-align: left;}
 .tr{text-align: right;}
 .tc{text-align: center;}
@@ -83,6 +84,7 @@ th, td{
 .vt{vertical-align: top;}
 .pr{position: relative;}
 .pa{position: absolute;}
+.pf{position: fixed;}
 .abs-right{position: absolute; right: 0;}
 .abs-left{position: absolute; left: 0;}
 .zoom{zoom: 1;}
@@ -96,7 +98,7 @@ th, td{
 .zIndex60{z-index: 60;}
 .zIndex90{z-index: 90;}
 
-/*≥§øÌ*/
+/*ÈïøÂÆΩ*/
 .w_40{width: 43.5%;}
 .w_50{width: 50%;}
 .w_100{width: 100%;}
@@ -162,16 +164,16 @@ th, td{
 .bdr4{border-radius: 4px;}
 .bdr5{border-radius: 5px;}
 .bdr8{border-radius: 8px;}
-.bgdTransparent{background: transparent;}
+.bgdTransparent{background: transparent !important;}
 .bgdf36948{background: #f36948;}
 .bgddce0e7{background: #dce0e7;}
 .bgd77ccdd{background: #77ccdd;}
 .bgdf3f5f8{background: #f3f5f8;}
-.bgdWhite{background: white;}
+.bgdWhite{background: white !important;}
 .bgdf9f9f9{background: #f9f9f9}
 
 
-/*±ﬂæ‡*/
+/*ËæπË∑ù*/
 .mt1{margin-top: 1px;}
 .mt5{margin-top: 5px;}
 .mt6{margin-top: 6px;}

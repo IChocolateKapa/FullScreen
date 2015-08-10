@@ -1,0 +1,11 @@
+/**
+ * Created by Administrator on 2015/8/7.
+ */
+@charset "utf-8";
+
+.header{
+    height: 60px;
+    background: rgba(34, 195, 170, 1);
+    border-bottom: 1px solid lightseagreen;
+    z-index: 10;
+}

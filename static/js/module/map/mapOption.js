@@ -16,6 +16,22 @@ GLOBAL_MapParams.circleArray = new Array();
 GLOBAL_MapParams.polylineArray = new Array();
 GLOBAL_MapParams.markerArray = new Array();
 
+/*封装一个添加和删除的方法*/
+GLOBAL_MapParams.overlayArray = {
+    addToArray: function(arr, ele){
+        arr.push(ele);
+    },
+
+    deleteFromArray: function(arr, ele){
+        event.preventDefault();
+        ele.setMap(null);
+        arr.pop(ele);
+    },
+
+    highlight: function(ele){
+        ele.fillColor = "red";
+    }
+};
 
 
 var MAP = {
@@ -42,11 +58,13 @@ var MAP = {
     /*通过输入的地址将地图转到相应地点*/
     codeAddress: function(geocoder, map, addrId) {
         var address = this.getMarkerAddr(addrId);
+        if(!address){
+            return false;
+        }
 
         geocoder.geocode({'address': address}, function(results, status){
                 if (status == google.maps.GeocoderStatus.OK) {
                     var latlng = results[0].geometry.location;
-                    var w_latlng =
                     map.setCenter(latlng);
                 } else {
                     alert('Geocode was not successful for the following reason: ' + status);
@@ -197,6 +215,13 @@ var MAP = {
         southwestlng = sw.lng();
         southwestlat  = sw.lat();
         return [northeastlat, northeastlng, southwestlat, southwestlng];
+    },
+
+    /*设置map*/
+    setCusMap: function(map, arr){
+        for(var i = 0; i < arr.length; i++){
+            arr[i].setMap(map);
+        }
     }
 
 

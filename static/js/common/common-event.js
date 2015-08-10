@@ -96,8 +96,17 @@ var eventUtil = {
         } else{
             event.cancelBubble = false;
         }
-    }
+    },
 
+    /*鼠标按下事件*/
+    enterKeyPress: function(event, handler){
+        event = this.getEvent(event);
+        if(event.keyCode == 13){
+            handler();
+        } else{
+            return false;
+        }
+    }
 
 
 }

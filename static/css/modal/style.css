@@ -1,0 +1,53 @@
+.pModal{
+    height: 100%;
+    width: 100%;
+    z-index: 18;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0, .3);
+}
+.modal{
+    float: left;
+    font-size: 16px;
+    font-family: "Microsoft Yahei";
+    color: white;
+    position: fixed;
+    background: rgba(38, 166, 179, 1);
+    z-index: 19;
+}
+.modal span{
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+    position: relative;
+    max-width: 380px;
+    white-space: pre-line;
+    word-break: break-all;
+}
+.modal span:nth-of-type(1){
+    top: 15px;
+}
+.modal span:nth-of-type(2){
+    top: 15px;
+}
+.closeX{
+    position: absolute;
+    z-index: 1200;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    right: 5px;
+    top: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-style: normal;
+    cursor: pointer;
+}
+.closeX:hover{
+    background: #cb6b7d;
+    text-decoration: none;
+}
+.title{
+
+}
