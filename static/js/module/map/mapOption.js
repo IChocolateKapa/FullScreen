@@ -222,6 +222,274 @@ var MAP = {
         for(var i = 0; i < arr.length; i++){
             arr[i].setMap(map);
         }
+    },
+
+    /*获取地图上亮点之间的距离*/
+    getLocDistance: function(fir_lat, fir_lng, sec_lat, sec_lng){
+
+        var distance = getDistance(fir_lat, fir_lng, sec_lat, sec_lng).toFixed(2);
+        if(distance > 1000){
+            distance = (distance/1000).toFixed(2) + "k";
+        }
+        return distance;
+    },
+
+    /*清除marker*/
+    clearMarkers: function(arr){
+        $(arr).each(function(index, mk){
+            mk.setMap(null);
+        })
+    },
+    /*清除矩形框*/
+    clearRects: function(rects){
+        $(rects).each(function(index, rect){
+            rect.setMap(null);
+        })
+        rects = [];
+    },
+
+    /*清除折线*/
+    clearPolys: function(polys){
+        $(polys).each(function(index, poly){
+            poly.setMap(null);
+        })
+        polys = [];
+    },
+
+    /*清除矩形框内点*/
+    clearMarkerInRect: function(){
+        /*因为要保证函数作用域，如果在each中再调用this.clearMarkers(),this会在each上层找，找不到*/
+        var clearMarkr = this.clearMarkers;
+        $(GLOBAL_MapParams.rectArray).each(function(index, rect){
+            if(rect.marray){
+                clearMarkr(rect.marray);
+                rect.marray = [];
+            }
+        })
+    },
+
+    /*清除折线内点*/
+    clearMarkerInPolys: function(){
+        var clearMarkr = this.clearMarkers;
+        $(GLOBAL_MapParams.polylineArray).each(function(index, poly){
+            if(poly.markerList){
+                clearMarkr(poly.markerList);
+                poly.marray = [];
+            }
+        })
+    },
+
+    /*获取折线路径长度*/
+    getCurPathDistance: function(pa_th){
+        var sumdist = 0;
+        //获得一条路径总长度
+        for(var j = 0; j < pa_th.length - 1; j++){
+            var belat = pa_th[j].lat();
+            var belng = pa_th[j].lng();
+            var enlat = pa_th[j+1].lat();
+            var enlng = pa_th[j+1].lng();
+            sumdist += Math.sqrt((belng - enlng)*(belng - enlng) + (belat - enlat)*(belat - enlat));
+        }
+
+        return sumdist;
+    },
+
+    /*平均分布矩形点*/
+    placeMarkerInRect: function(flag, rect_col, rect_row, gapId_Row, gapId_Col){
+
+        this.clearMarkerInRect();
+        /*不预览就返回*/
+        if(!flag){
+            return false;
+        }
+
+        var getLocation = this.getMapLocation;
+
+        var getLocDistance = this.getLocDistance;
+
+        $(GLOBAL_MapParams.rectArray).each(function(index, rect){
+
+            var locArray = new Array();
+
+            /*矩形的对角顶点*/
+            var latlngArr = MAP.getRectNESWLatLng(rect);
+            var northeastlat= latlngArr[0];
+            var northeastlng  = latlngArr[1];
+            var southwestlat= latlngArr[2];
+            var southwestlng  = latlngArr[3];
+
+            if((rect_col == "0" || rect_col == "1") && (rect_row == "0" || rect_row == "1")){
+                $("#"+gapId_Row).text("0米");
+                $("#"+gapId_Col).text("0米");
+            } else{
+                //更新文字间距
+                var lng_gap = getLocDistance(northeastlat, northeastlng, northeastlat, southwestlng);
+                var lat_gap = getLocDistance(northeastlat, northeastlng, southwestlat, northeastlng);
+
+                $("#"+gapId_Row).text(lng_gap+"m");
+                $("#"+gapId_Col).text(lat_gap+"m");
+
+            }
+
+
+
+            /*求出矩形的长宽*/
+            /*(nelng, nelat), (swlng, swlat)*/
+            //两点之间的距离：.....so stupid, 求两点间距干什么。。
+            //var d = Math.sqrt((nelng - swlng)*(nelng - swlng) + (nelat - swlat)*(nelat - swlat))
+            var rect_w = Math.abs(northeastlng - southwestlng);
+            var rect_h = Math.abs(northeastlat - southwestlat);
+            var n_w = rect_w / (parseInt(rect_col) - 1);
+            var n_h = rect_h / (parseInt(rect_row) - 1);
+
+            var mlat;
+            var mlng;
+            var loc;
+            for (var j = 0; j < rect_row; j++){
+                mlat = northeastlat - j * n_h;
+                for(var k = 0; k < rect_col; k++){
+                    mlng = southwestlng + k * n_w;
+                    loc = getLocation(mlat, mlng);
+
+                    WGS84loc = new WGS84_to_GCJ02().detransform(parseFloat(mlat),parseFloat(mlng))
+
+                    var mkr = new google.maps.Marker({
+                        position: loc,
+                        map: GLOBAL_MapParams.map,
+                        title: WGS84loc.toString(),
+                        draggable:true
+                    });
+
+                    locArray.push(mkr);//这个矩形所包含的点数
+
+                    google.maps.event.addListener(mkr, 'dblclick', function(){
+                        GLOBAL_MapParams.overlayArray.deleteFromArray(GLOBAL_MapParams.polylineArray, this);
+                    });
+
+                }
+            }
+            rect.marray = locArray;
+        })
+    },
+
+
+    /*折线图平均布点*/
+    placeMarkerInPolys: function(flag, n, gapId){
+
+        this.clearMarkerInPolys();
+        /*不预览就返回*/
+        if(!flag){
+            return false;
+        }
+
+        var getLocation = this.getMapLocation;
+
+        var getLocDistance = this.getLocDistance;
+
+        var getPathDistance = this.getCurPathDistance;
+
+
+        $(GLOBAL_MapParams.polylineArray).each(function(index, poly){
+
+            var pa_th = poly.getPath().getArray();
+
+            //求得当前路径的总长度
+            var sumdist = getPathDistance(pa_th);
+            var each_d = sumdist / (parseInt(n) - 1);
+
+            locArray_ply = new Array();
+
+
+            var d_sp = 0;//每条折线的长度 与 该条折线放上点后剩余的长度的差值
+
+            //遍历该路径中所有折线
+            for(var j = 0; j < pa_th.length - 1; j++){
+                //当前折线两端的点坐标
+                var belat = pa_th[j].lat();
+                var belng = pa_th[j].lng();
+
+                var enlat = pa_th[j+1].lat();
+                var enlng = pa_th[j+1].lng();
+
+                var kl = j+1;
+
+
+                //当前折线的长度
+                var d_bline = Math.sqrt((belng - enlng)*(belng - enlng) + (belat - enlat)*(belat - enlat));
+                var d_be = d_bline + d_sp;
+
+
+                //每条折线上能放的点的个数
+                var dot_n = Math.floor(d_be / each_d);
+
+                if(j == 0){
+                    dot_n += 1;
+                }
+
+                var diflat = belat - enlat;
+                var diflng = belng - enlng; //正负皆有可能
+
+                var sum = 0;
+
+                var mloc;
+
+                //给每条折线放置点
+                for(var k = 0; k < dot_n; k++){
+
+                    if(locArray_ply.length == parseInt(n)){
+                        break;
+                    }
+
+
+                    if(j == 0){
+                        sum =  k * each_d - d_sp;
+                    } else {
+                        sum = (k+1) * each_d - d_sp;
+                    }
+
+
+
+                    var mlat = belat - (sum / d_be) * diflat;
+                    var mlng = belng - (sum / d_be) * diflng;
+
+
+                    mloc = getLocation(mlat, mlng);
+
+                    WGS84loc = new WGS84_to_GCJ02().detransform(parseFloat(mlat),parseFloat(mlng));
+
+                    var mkr = new google.maps.Marker({
+                        position: mloc,
+                        map: GLOBAL_MapParams.map,
+                        title: WGS84loc.toString(),
+                        draggable:true
+                    });
+
+                    locArray_ply.push(mkr);//当前路径所包含的点数
+                    poly.markerList = locArray_ply;
+
+                    google.maps.event.addListener(mkr, 'dblclick', function(){
+                        GLOBAL_MapParams.overlayArray.deleteFromArray(GLOBAL_MapParams.markerArray, this);
+                    });
+
+                }
+
+                //当前折线布完点后剩余的距离,应该用当前折线实际的长度减去布完点的长度
+                d_sp = d_bline - ((dot_n-1) * each_d);
+            }
+
+            //计算点之间的间距：
+            // 布点的第一个点
+            var fir_lat = locArray_ply[0].position.lat();
+            var fir_lng = locArray_ply[0].position.lng();
+
+            //获取布点的第二个点
+            var sec_lat = locArray_ply[1].position.lat();
+            var sec_lng = locArray_ply[1].position.lng();
+
+            var distance = getLocDistance(fir_lat, fir_lng, sec_lat, sec_lng);
+
+            $("#"+gapId).text(distance+"m");
+        })
     }
 
 

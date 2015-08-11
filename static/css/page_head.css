@@ -9,3 +9,6 @@
     border-bottom: 1px solid lightseagreen;
     z-index: 10;
 }
+.header h3{
+    line-height: 60px;
+}

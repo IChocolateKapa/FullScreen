@@ -10,10 +10,8 @@
 </head>
 <body>
 
-    <div class="header pf tp0 w_100">
-        <ul>
-            <li><a href=""></a></li>
-        </ul>
+    <div class="header pf tp0 w_100 tc">
+        <h3 class="fcWhite ffMy fn f26">选择地图顶部的绘图工具在地图上绘制图形，进行布点测试</h3>
     </div>
     <div class="content w_100 h_100 mbc mt60">
         <div class="main pr h_100 clearFix">
@@ -35,18 +33,21 @@
                         <span class="_chbx inlineBlock _nologin"></span>&nbsp;
                         <span class="pr tp-3 lt-4 fcwhite ffMy f12">预览</span>
                     </div>&nbsp;&nbsp;
-                    <span class="inlineBlock pr tp-3 lt-4 fcwhite ffMy f12" >间距： <i class="fstn">0 米</i></span>
+                    <span class="inlineBlock pr tp-3 lt-4 fcwhite ffMy f12" >
+                        行间距： <i class="fstn" id="rectgap_r">0 米</i>
+                        列间距： <i class="fstn" id="rectgap_c">0 米</i>
+                    </span>
 
                 </div>
 
                 <div class="budianDlg mbc fcWhite ffMy f12 none" id="_poly">
                     <span>折线布点数：</span>
-                    <input type="text" placeholder="10" value="10">&nbsp;<br/><br/>
+                    <input type="text" placeholder="10" id="polylineNum" value="10">&nbsp;<br/><br/>
                     <div class="staylogin inlineBlock">
                         <span class="_chbx inlineBlock _nologin"></span>&nbsp;
                         <span class="pr tp-3 lt-4 fcwhite ffMy f12">预览</span>
                     </div>&nbsp;&nbsp;
-                    <span class="inlineBlock pr tp-3 lt-4 fcwhite ffMy f12" >间距： <i class="fstn">0 米</i></span>
+                    <span class="inlineBlock pr tp-3 lt-4 fcwhite ffMy f12" >间距： <i class="fstn" id="plgap">0 米</i></span>
 
                 </div>
 
@@ -55,6 +56,15 @@
                     <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">Github</a>
                     <a href="mailto:echochocolatekapa@163.com" class="fcWhite tc no_unl">邮箱</a>
                     <a href="javascript:void(0)" class="fcWhite tc no_unl" id="phone">电话</a>
+                </div>
+
+
+                <div class="budianDlg mbc fcWhite ffMy pr mt60">
+                    <span class="contact tl f18 fb">技术点</span>
+                    <a href="https://github.com/IChocolateKapa" class="fcWhite tc no_unl">Requirejs 模块化</a>
+                    <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">弹窗组件封装</a>
+                    <a href="https://github.com/IChocolateKapa" class="fcWhite tc no_unl">地图操作对象封装</a>
+                    <a href="https://github.com/IChocolateKapa" class="fcWhite tc no_unl">平均布点算法</a>
                 </div>
             </div>
 

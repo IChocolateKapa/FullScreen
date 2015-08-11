@@ -10,7 +10,7 @@ define(['jquery'], function($){
         alert: function(title, msg, cfg){
 
             this.cfg = {
-                width: "800",
+                width: "400",
                 "height": "110",
                 "x": "50%",
                 "y": "20%"
