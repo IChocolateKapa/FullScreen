@@ -14,6 +14,10 @@ th, td{
     padding: 0;
 }
 
+ul, ul li{
+    list-style: none;
+}
+
 
 /*文字排版*/
 .f12{font-size: 12px;}

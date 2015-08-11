@@ -1,0 +1,103 @@
+body{
+    background: rgb(34, 188, 175);
+}
+.main{
+    margin-top: 80px;
+    height: 700px;
+    /*background: rgb(34, 158, 175);*/
+}
+.slide{
+    width: 85%;
+}
+.slideContent{
+    width: 960px;
+    height: 700px;
+}
+/*.slideContent:hover .slider-prev,
+.slideContent:hover .slider-next{
+    opacity: 1;
+}*/
+.ListItem{
+    width: 960px;
+    opacity: 0;
+    z-index: 0;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    -webkit-transition: all .2s linear .1s;
+    -moz-transition: all .2s linear .1s;
+    -ms-transition: all .2s linear .1s;
+    -o-transition: all .2s linear .1s;
+    transition: all .2s linear .1s;
+}
+.ListItem.curr{
+    opacity: 1;
+    z-index: 1;
+}
+.ListItem img{
+    width: 960px;
+    height: 600px;
+}
+.slideTrigger{
+    height: 50px;
+    width: 330px;
+    margin: 10px auto 0 auto;
+    text-align: center;
+    bottom: 30px;
+    left: 36%;
+}
+.slideTrigger li{
+    height: 30px;
+    width: 30px;
+    margin: 0 auto;
+    float: left;
+    position: relative;
+    margin-left: 20px;
+}
+.slideTrigger li a{
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .3);
+    border: transparent;
+    -webkit-transition: all .2s linear .1s;
+    -moz-transition: all .2s linear .1s;
+    -ms-transition: all .2s linear .1s;
+    -o-transition: all .2s linear .1s;
+    transition: all .2s linear .1s;
+}
+/*.slideTrigger li a:hover,*/
+.slideTrigger li a.curr{
+    background: rgba(255, 0, 0, .8);
+    color: #fff;
+}
+.slider-page{
+    height: 600px;
+    width: 0;
+    left: 50%;
+}
+.slider-page a {
+    top: 50%;
+    margin-top: -31px;
+    z-index: 1;
+    width: 28px;
+    height: 62px;
+    line-height: 62px;
+    background: #808080;
+    font-family: "simsun";
+    background: rgba(0,0,0,0.2);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#32000000,endColorstr=#32000000);
+}
+.slider-next,
+.slider-prev{
+    /*opacity: 0;*/
+    display: none;
+    z-index: 4!important;
+}
+.slider-next{
+    right: -480px;
+}
+.slider-prev{
+    left: -480px;
+}
