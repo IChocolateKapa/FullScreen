@@ -20,6 +20,7 @@ require(['jquery'], function($){
     $(function(){
         var slideTime;
         $(".slideTrigger li").mouseenter(function(){
+            clearInterval(globalSlide);
             var $this = $(this);
             var index = $this.index();
             slideTime = setTimeout(function(){
@@ -32,16 +33,17 @@ require(['jquery'], function($){
 
         $(".slideTrigger a").mouseleave(function(){
             clearTimeout(slideTime);
+            autoSlide();
         })
 
 
-        $(".ListItem").mouseenter(
+       /* $(".ListItem").mouseenter(
             function(){
                 var $this = $(this);
-                /*检测鼠标移动*/
-                /*$this.bind("mousemove", function(){
+                /!*检测鼠标移动*!/
+                /!*$this.bind("mousemove", function(){
                     showSlidePage(event, $this);
-                })*/
+                })*!/
 
                 $this.mousemove(function(){
                     showSlidePage(event, $this);
@@ -51,12 +53,23 @@ require(['jquery'], function($){
 
         $(".ListItem").mouseleave(function(){
             //var $this = $(this);
-            /*$this.unbind("mousemove", function(){
+            /!*$this.unbind("mousemove", function(){
                 showSlidePage(event, $this);
-            });*/
+            });*!/
 
             $(".slider-next").hide(100);
             $(".slider-prev").hide(100);
+        })*/
+
+        $(".slider-next").click(function(){
+            clearInterval(globalSlide);
+            slideAnimate(true);
+            autoSlide();
+        })
+        $(".slider-prev").click(function(){
+            clearInterval(globalSlide);
+            slideAnimate(false);
+            autoSlide();
         })
     })
 
@@ -65,17 +78,28 @@ require(['jquery'], function($){
     var globalSlide;
     function autoSlide(){
         globalSlide = window.setInterval(function(){
-            var curIndex = $(".ListItem.curr").index();
+            slideAnimate(true);
+        }, 5000)
+    }
+
+    function slideAnimate(flag){
+        var curIndex = $(".ListItem.curr").index();
+
+        if(flag){
             var nextIndex = curIndex + 1;
             if(nextIndex > $(".ListItem").length - 1){
                 nextIndex = 0;
             }
-            $(".slideTrigger a").removeClass("curr");
-            $(".slideTrigger a").eq(nextIndex).addClass("curr");
-            $(".ListItem").removeClass("curr");
-            $(".ListItem").eq(nextIndex).addClass("curr");
-
-        }, 5000)
+        } else {
+            var nextIndex = curIndex - 1;
+            if(nextIndex < 0){
+                nextIndex = 5;
+            }
+        }
+        $(".slideTrigger a").removeClass("curr");
+        $(".slideTrigger a").eq(nextIndex).addClass("curr");
+        $(".ListItem").removeClass("curr");
+        $(".ListItem").eq(nextIndex).addClass("curr");
     }
 
     function showSlidePage(event, $obj){

@@ -17,21 +17,38 @@ body{
 .slideContent:hover .slider-next{
     opacity: 1;
 }
-.ListItem{
+.ListContainer{
+    position: absolute;
+    width: calc(960px*6);
+    height: 700px;
+}
+.List{
+    position: relative;
     width: 960px;
+    height: 700px;
+    overflow: hidden;
+}
+.ListItem{
     opacity: 0;
     z-index: 0;
     overflow: hidden;
+    position: absolute;
     top: 0;
-    left: 0;
+    left: 960px;
     -webkit-transition: all .2s linear .1s;
     -moz-transition: all .2s linear .1s;
     -ms-transition: all .2s linear .1s;
     -o-transition: all .2s linear .1s;
     transition: all .2s linear .1s;
 }
+.ListItem.prev{
+    opacity: 1;
+    left: -960px !important;
+    z-index: 1;
+}
 .ListItem.curr{
     opacity: 1;
+    left: 0 !important;
     z-index: 1;
 }
 .ListItem img{
