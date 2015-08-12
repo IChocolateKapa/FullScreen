@@ -15,7 +15,7 @@ require.config({
 
 require(['jquery'], function($){
 
-    //autoSlide();
+    autoSlide();
 
 
     $(function(){
@@ -48,12 +48,12 @@ require(['jquery'], function($){
         $(".slider-next").click(function(){
             clearInterval(globalSlide);
             slideAnimate(true);
-            //autoSlide();
+            autoSlide();
         })
         $(".slider-prev").click(function(){
             clearInterval(globalSlide);
             slideAnimate(false);
-            //autoSlide();
+            autoSlide();
         })
     })
 
