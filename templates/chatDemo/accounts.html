@@ -1,22 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html ng-app>
+<head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/css/base.css"/>
+    <link rel="stylesheet" href="../../static/css/lib/css/font-awesome.css"/>
     <link rel="stylesheet" href="../../static/css/page_head.css"/>
     <link rel="stylesheet" href="../../static/css/common_index.css"/>
+    <link rel="stylesheet" href="../../static/css/chat/waterfall.css"/>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.1.0/angular.min.js"></script>
+    <script src="../../static/js/module/chat/angularImg.js"></script>
+    <script src="../../static/js/org/require.js" data-main="../../static/js/module/chat/waterFall"></script>
+    <!--<script src="../../static/js/module/chat/waterFall.js"></script>-->
     <title>帐号列表</title>
+    <style>
+        /*要想使一个divheight沾满浏览器的100%，必须要设置成绝对定位*/
+        body{
+            background: #22c3aa;
+        }
+        .main{
+            width: 100%;
+            height: 100%;
+        }
+        .main-r{
+            width: 84%;
+            height: 100%;
+            /*overflow: hidden;*/
+
+        }
+        .mt70{
+            margin-top: 70px;
+        }
+        .main-r-container{
+            height: auto;
+        }
+    </style>
 </head>
 <body>
 <div class="header pf tp0 w_100 tc">
     <h3 class="fcWhite ffMy fn f26">我的帐号列表，选择一个做你自己</h3>
 </div>
-<div class="main w_100">
-    <div class="slide fr">
-    </div>
+<div class="main w_100 pa clearFix">
 
-    <div class="sideBar pr fl h_100">
-        <div class="budianDlg mbc fcWhite ffMy pr">
+    <div class="sideBar pr fl h_100 ">
+        <div class="budianDlg mbc fcWhite ffMy pr mt60">
             <span class="contact tl f18 fb">联系我</span>
             <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">Github</a>
             <a href="mailto:echochocolatekapa@163.com" class="fcWhite tc no_unl">邮箱</a>
@@ -24,13 +50,176 @@
         </div>
 
 
-        <div class="budianDlg mbc fcWhite ffMy pr mt60">
+        <div class="budianDlg mbc fcWhite ffMy inline mt60">
             <span class="contact tl f18 fb">技术点</span>
             <a href="https://github.com/IChocolateKapa" class="fcWhite tc no_unl">Requirejs 模块化</a>
-            <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">鼠标位置检测</a>
-            <a href="https://github.com/IChocolateKapa" class="fcWhite tc no_unl">定时器</a>
+            <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">Angular.js</a>
+            <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">瀑布流</a>
+            <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">模拟Ajax预加载</a>
         </div>
     </div>
+
+
+    <div class="main-r fl" ng-controller="imgList">
+        <div class="main-r-container pr mbc mt70">
+           <!-- <div class="section fl" ng-repeat="img in imgs">
+                <div class="pic">
+                    <img src="../../static/images/{{img}}.jpg" alt="" />
+                </div>
+            </div>-->
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/0.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/1.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/2.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/3.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/4.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/5.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/6.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/7.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/8.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/9.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/10.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/11.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/12.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/13.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/14.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/15.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/16.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/17.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/18.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/19.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/20.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/21.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/22.jpg" alt="" />
+                </div>
+            </div>
+            <div class="section fl">
+                <div class="section-before"><i class="fa fa-user"></i></div>
+                <div class="pic">
+                    <img src="../../static/images/23.jpg" alt="" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="fixedBar pf">
+    <span class="loading pa tc fcWhite ffMy f16">加载中...</span>
+    <a href="" class="goTop pa no_unl" title="返回顶部"><i class="fa fa-angle-double-up fa-2x"></i></a>
 </div>
 </body>
 </html>

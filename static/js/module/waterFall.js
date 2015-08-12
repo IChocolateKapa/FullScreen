@@ -40,3 +40,4 @@ function waterFall(){
 
     console.log(hArr);
 }
+

@@ -92,6 +92,7 @@ ul, ul li{
 .abs-right{position: absolute; right: 0;}
 .abs-left{position: absolute; left: 0;}
 .zoom{zoom: 1;}
+.inline{display: inline;}
 .hidden{visibility: hidden;}
 .none{display: none;}
 .inlineBlock{display: inline-block;}

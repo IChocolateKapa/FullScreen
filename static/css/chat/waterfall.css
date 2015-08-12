@@ -1,0 +1,117 @@
+/**
+ * Created by Administrator on 2015/8/5.
+ */
+@charset "utf-8";
+
+.section{
+    padding: 15px 0 0 15px;
+    /*padding: 15px;*/
+    z-index: 10;
+    position: relative;
+    /*background: white;*/
+    /*border-radius: 5px;*/
+    /*border: 1px springgreen solid;*/
+}
+
+.pic{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px dashed #ccc;
+    box-shadow: 0 0 5px #999;
+    cursor: pointer;
+    background: white;
+}
+.section-before{
+    content: "选中";
+    font-size: 12px;
+    text-align: center;
+    font-family: "Microsoft Yahei";
+    color: #ffffff;
+    position: absolute;
+    opacity: 0.3;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    top: 30px;
+    right: 30px;
+    background: rgba(0, 0, 0, .3);
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    cursor: pointer;
+}
+.section:hover{
+    /*content: "";*/
+    /*width: 262px;*/
+    /*height: auto;*/
+    /*margin-top: 10px;*/
+    /*box-shadow: 0 0 100px 1000px rgba(0, 0, 0, .3);*/
+    /*transform: scale(1.5);*/
+    /*-webkit-transform: scale(1.5);*/
+    z-index: 99;
+    /*position: absolute;*/
+}
+.section:hover .section-before{
+    opacity: 1;
+    /*color: red;*/
+
+}
+.section:target::before{
+    color: red;
+}
+
+.pic img{
+    width: 240px;
+    height: auto;
+}
+
+.fixedBar{
+    z-index: 100;
+    width: 1px;
+    height: 1px;
+    /*top: 30px;*/
+    left: 50%;
+    margin-left: -100px;
+    bottom: 60px;
+    
+}
+.loading{
+    display: inline-block;
+    /*visibility: visible;*/
+    visibility: hidden;
+    cursor: pointer;
+    line-height: 50px;
+    width: 500px;
+    letter-spacing: .1em;
+    background: rgba(0, 0, 0, .7);
+}
+.goTop{
+    display: inline-block;
+    visibility: hidden;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    background: rgba(137, 154, 68, .9);
+    /*background: rgba(95, 15, 128, .8);*/
+    line-height: 50px;
+    text-align: center;
+    /*right: -900px;*/
+    left: 945px;
+}
+.goTop i{
+    position: relative;
+    /*top: 9px;*/
+    /*top: 5px;*/
+    color: #ffffff;
+    animation: spark .6s linear infinite;
+    -webkit-animation: spark .6s linear infinite;
+}
+
+@keyframes spark {
+    from{top: 9px;}
+    to{top: 5px;}
+}
+@-webkit-keyframes spark {
+    from{top: 9px;}
+    to{top: 5px;}
+}
