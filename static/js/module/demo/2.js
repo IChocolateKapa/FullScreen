@@ -38,11 +38,11 @@ require(['jquery'], function($){
         })
 
 
-      /* $(".ListItem").each(function(index, ele){
+      $(".ListItem").each(function(index, ele){
            $(ele).css({
                "left": index*960 + "px"
            })
-       })*/
+       })
 
 
         $(".slider-next").click(function(){
@@ -68,6 +68,7 @@ require(['jquery'], function($){
 
     function slideAnimate(flag){
 
+        //var curIndex = $(".slideTrigger a.curr").index();
         var curIndex = $(".ListItem.curr").index();
 
         if(flag){
@@ -85,7 +86,9 @@ require(['jquery'], function($){
 
 
         //$(".ListItem").eq(curIndex).animate({"left": "-960px"}, 500);
-        $(".ListItem").eq(curIndex).css({"left": "-960px"});
+        //$(".ListItem").eq(curIndex).css({"left": "-960px"});
+
+        $(".List").css({"left": "-" + 960*nextIndex + "px"});
 
         $(".ListItem").removeClass("curr");
         $(".ListItem").eq(nextIndex).addClass("curr");
@@ -95,7 +98,7 @@ require(['jquery'], function($){
 
         console.log($(".ListItem").eq(curIndex-1).css("left"))
 
-        $(".ListItem").eq(curIndex).css({"left": "960px"});
+        //$(".ListItem").eq(curIndex).css({"left": 960*($(".ListItem").length-curIndex-1) + "px"});
 
         console.log($(".ListItem").eq(curIndex-1).css("left"))
 

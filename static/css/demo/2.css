@@ -26,7 +26,13 @@ body{
     position: relative;
     width: 960px;
     height: 700px;
-    overflow: hidden;
+    left: 0;
+    -webkit-transition: left .2s linear .1s;
+    -moz-transition: left .2s linear .1s;
+    -ms-transition: left .2s linear .1s;
+    -o-transition: left .2s linear .1s;
+    transition: left .2s linear .1s;
+
 }
 .ListItem{
     opacity: 0;
@@ -34,12 +40,11 @@ body{
     overflow: hidden;
     position: absolute;
     top: 0;
-    left: 960px;
-    -webkit-transition: all .2s linear .1s;
-    -moz-transition: all .2s linear .1s;
-    -ms-transition: all .2s linear .1s;
-    -o-transition: all .2s linear .1s;
-    transition: all .2s linear .1s;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -ms-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear;
 }
 .ListItem.prev{
     opacity: 1;
@@ -48,7 +53,7 @@ body{
 }
 .ListItem.curr{
     opacity: 1;
-    left: 0 !important;
+    left: 0;
     z-index: 1;
 }
 .ListItem img{
