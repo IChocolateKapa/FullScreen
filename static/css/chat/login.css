@@ -1,0 +1,88 @@
+body{
+    background: rgb(91, 15, 128);
+    /*background: white;*/
+}
+body>div:nth-of-type(1){
+    margin: 10% auto;
+    height: auto;
+    /*min-height: 300px;*/
+}
+.imgdiv{
+    height: 80px;
+    min-width: 500px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+}
+.imgdiv img{
+    /*box-shadow: 0 0 10px 10px rgba(255, 255, 255, .6);*/
+    box-shadow: 0 0 15px 20px rgba(0, 0, 0, .2);
+}
+
+
+.btdiv{
+    height: 400px;
+    min-width: 500px;
+    margin: 60px auto auto auto;
+    text-align: center;
+    position: relative;
+}
+#span_tip{
+    display: inline-block;
+    width: 300px;
+    line-height: 20px;
+    color: white;
+    text-align: left;
+}
+
+.btdiv input{
+    border: 1px solid transparent;
+    display: block;
+    font-family: '微软雅黑';
+    text-indent: 3px;
+    width: 300px;
+    height: 45px;
+    position: relative;
+    left: 50%;
+    margin-left: -150px;
+    outline: none;
+    text-indent: 10px;
+}
+
+.btdiv input[type=text], .btdiv input[type=password]{
+    color: darkgrey;
+}
+.btdiv input[type=text]:focus, .btdiv input[type=password]:focus,.btdiv input[type=text]:hover, .btdiv input[type=password]:hover{
+    border: 1px #00b07b solid;
+}
+
+.btdiv input[type=button]{
+    height: 50px;
+    color: #fff;
+    background: #209599;
+    font-size: 16px;
+}
+
+.btdiv input[type=button]:focus, .btdiv input[type=button]:hover{
+    text-decoration: none;
+    background-color: rgba(32, 149, 153, .8);
+}
+
+.next{
+    width: 150px;
+    height: 50px;
+    left: 50%;
+    margin-left: 150px;
+    top: 50%;
+    margin-top: -30px;
+}
+.next a:link,
+.next a:visited,
+.next a:hover,
+.next a:active{
+    text-decoration: none;
+}
+.next i{
+    color: white;
+    z-index: 10;
+}
