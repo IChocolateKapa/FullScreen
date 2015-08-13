@@ -66,13 +66,12 @@
 }
 
 .fixedBar{
-    z-index: 100;
+    z-index: 101;
     width: 1px;
     height: 1px;
-    /*top: 30px;*/
     left: 50%;
     margin-left: -100px;
-    bottom: 60px;
+    bottom: 100px;
     
 }
 .loading{
@@ -82,6 +81,7 @@
     cursor: pointer;
     line-height: 50px;
     width: 500px;
+    /*left: ;*/
     letter-spacing: .1em;
     background: rgba(0, 0, 0, .7);
 }
@@ -91,12 +91,13 @@
     cursor: pointer;
     height: 50px;
     width: 50px;
+    position: fixed;
+    bottom: 55px;
     background: rgba(137, 154, 68, .9);
-    /*background: rgba(95, 15, 128, .8);*/
     line-height: 50px;
     text-align: center;
-    /*right: -900px;*/
-    left: 945px;
+    right: 5px;
+    z-index: 103;
 }
 .goTop i{
     position: relative;

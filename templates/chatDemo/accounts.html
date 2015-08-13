@@ -33,6 +33,85 @@
         .main-r-container{
             height: auto;
         }
+        .flyImg{
+            top: 40px;
+            margin-top: -30px;
+            left: 200px;
+            position: absolute;
+            height: 60px;
+            width: 60px;
+            z-index: 1000;
+            border: 1px solid white;
+        }
+        .flyImg img{
+            height: 60px;
+            width: 60px;
+        }
+
+        .fixedSideBar{
+            z-index: 100;
+            position: fixed;
+            width: 300px;
+            height: 100%;
+            right: 0;
+            bottom: 0;
+            border-left: 1px solid #22c3aa;
+            cursor: pointer;
+            background: rgba(255, 255, 255, .9);
+            transition: all .2s linear;
+            -webkit-transition: all .2s linear;
+            transform-origin: bottom right;
+        }
+        .fixedSideBar>i{
+            display: block;
+            color: rgba(137, 154, 68, 1);
+            position: absolute;
+            right: 10px;
+            top: 70px;
+        }
+        .closed>i{
+            display: none;
+        }
+        .closed{
+            border-left: 1px solid transparent;
+            height: 50px;
+            width: 150px;
+            right: 0;
+            bottom: 0;
+        }
+        .closed .switchBar{
+            display: block;
+        }
+        .switchBar{
+            display: none;
+            width: 150px;
+            height: 50px;
+            position: absolute;
+            left: 50%;
+            margin-left: -75px;
+            top: 50%;
+            margin-top: -25px;
+            background: white;
+            text-align: center;
+        }
+        .switchBar i{
+            color: rgba(137, 154, 68, 1);
+            line-height: 50px;
+            margin-right: 27px;
+        }
+        .tip{
+            position: absolute;
+            width: 27px;
+            background: rgba(137, 154, 68, 1);
+            border-radius: 50%;
+            line-height: 27px;
+            color: white;
+            right: 25px;
+            font-size: 10px;
+            font-family: "Microsoft Yahei";
+            top: 50%;
+            margin-top: -13.5px;
+        }
     </style>
 </head>
 <body>
@@ -55,6 +134,7 @@
             <a href="https://github.com/IChocolateKapa" class="fcWhite tc no_unl">Requirejs 模块化</a>
             <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">Angular.js</a>
             <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">瀑布流</a>
+            <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">自定义动画</a>
             <a href="https://github.com/IChocolateKapa" target="_blank" class="fcWhite tc no_unl">模拟Ajax预加载</a>
         </div>
     </div>
@@ -219,7 +299,16 @@
 
 <div class="fixedBar pf">
     <span class="loading pa tc fcWhite ffMy f16">加载中...</span>
-    <a href="" class="goTop pa no_unl" title="返回顶部"><i class="fa fa-angle-double-up fa-2x"></i></a>
+</div>
+
+<a href="" class="goTop pa no_unl" title="返回顶部"><i class="fa fa-angle-double-up fa-2x"></i></a>
+
+<div class="fixedSideBar closed">
+    <i class="fa fa-chevron-circle-down fa-2x"></i>
+    <div class="switchBar">
+        <i class="fa fa-chevron-circle-up fa-2x"></i>
+        <span class="tip inlineBlock">12</span>
+    </div>
 </div>
 </body>
 </html>

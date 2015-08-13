@@ -15,6 +15,7 @@ body{
 }
 
 .sideBar{
+    z-index: 100;
     width: 15%;
     box-shadow: 0 0 15px 10px rgba(34, 185, 180, .36) inset;
     background: rgba(34, 195, 170, .8);

@@ -15,20 +15,13 @@ define(['jquery'], function($){
     foreSeeImage.prototype = {
 
         initZoomDiv: function($parentObj, cfg){
-
             /*获取元父元素的宽高*/
             var eleH = $parentObj.height();
             /*只支持显示在元素左边或者右边*/
             this.cfg = {
                 "wh": eleH,
                 "pos": "right",
-                "x": 5,
-                "mwh": 200,
-                "borderRadius": 0,
-                "strokeColor": "white",
-                "strokeWeight": 1,
-                "strokeStyle": "solid",
-                "fillColor": "rgba(255, 255, 255,.3)"
+                "x": 5
             }
             $.extend(this.cfg, cfg);
 
@@ -58,28 +51,14 @@ define(['jquery'], function($){
             this.zoomDiv.css(zoomStyle);
 
             var parentImgSrc = $parentObj.find("img").attr("src");
-            var $img = $("<img src='"+ parentImgSrc + "''>");
+            var $img = $("<img src='"+ parentImgSrc + "'>");
             this.imgEle = $img;
             $zoomDiv.append($img);
-
-
+            console.log("$zoomDiv : ", $zoomDiv);
             /*增加半透框滑块元素*/
             var $mask = $("<div class='mask'></div>");
             this.mask = $mask;
             $mask.prependTo($parentObj);
-            /*var maskStyle = {
-                    "display": "block",
-                    "position": "absolute",
-                    "width": "200px",
-                    "height": "200px",
-                    "background": "black",
-                    "z-index": "100",
-                    "cursor": "move"
-            }
-
-            $mask.css(maskStyle);*/
-
-
             return $(".mask");
         },
 
