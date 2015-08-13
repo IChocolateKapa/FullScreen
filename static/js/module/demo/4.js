@@ -9,16 +9,33 @@ require.config({
 });
 
 
-require(['jquery'], function($){
-
+require(['jquery', '../../common/foreSeeImage/foreSeeImage'], function($, fm){
+    console.log(fm)
+    var fm = new fm.foreSeeImage();
     $(function(){
-        $(".ListItem").mousemove(function(){
-            moveWithMouse($(".ListItem"), $(".selDiv"));
-            /*获取元素覆盖下的图片的像素*/
-            var offX = $(".selDiv").position().left;
-            var offY = $(".selDiv").position().top;
-            $(".zoomDiv img").css({"top": "-" + offY*1.9 + "px", "left": "-" + offX*1.9 + "px"});
-        })
+
+        var $zoomDiv;
+
+        $(".ListItem").hover(
+
+            function(){
+                $(".selDiv").show();
+
+                /*初始化一个预览容器，可以自定义样式*/
+                $zoomDiv = fm.initZoomDiv($(".ListItem"), {});
+
+                $(".ListItem").mousemove(function(){
+
+                    fm.showForeImage($(".ListItem"), $(".selDiv"));
+
+                })
+            },
+            function(){
+                $(".selDiv").hide();
+                fm.deleteZoomDiv();
+
+            }
+        )
 
     })
 
