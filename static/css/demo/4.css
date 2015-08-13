@@ -131,12 +131,3 @@ body{
 .slider-prev{
     left: -480px;
 }
-
-.selDiv{
-    display: none;
-    width: 200px;
-    height: 200px;
-    background: rgba(234, 255, 0, .2);
-    z-index: 100;
-    cursor: move;
-}

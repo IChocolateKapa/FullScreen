@@ -7,8 +7,9 @@ define(['jquery'], function($){
 
     foreSeeImage.zoomDiv = null;
     foreSeeImage.imgEle = null;
+    foreSeeImage.mask = null;
 
-    foreSeeImage.cfg = {}
+    foreSeeImage.cfg = {};
 
 
     foreSeeImage.prototype = {
@@ -21,7 +22,13 @@ define(['jquery'], function($){
             this.cfg = {
                 "wh": eleH,
                 "pos": "right",
-                "x": 5
+                "x": 5,
+                "mwh": 200,
+                "borderRadius": 0,
+                "strokeColor": "white",
+                "strokeWeight": 1,
+                "strokeStyle": "solid",
+                "fillColor": "rgba(255, 255, 255,.3)"
             }
             $.extend(this.cfg, cfg);
 
@@ -38,9 +45,8 @@ define(['jquery'], function($){
                 "height": this.cfg.wh + "px",
                 "width": this.cfg.wh + "px",
                 'top': 0
-            }
+            };
             var pos = this.cfg.pos;
-            console.log("this.cfg.x: ", this.cfg.x)
             if(pos == "left"){
                 zoomStyle["left"] = "-" + (this.cfg.wh + this.cfg.x) + "px";
             } else if(pos == "right") {
@@ -51,20 +57,35 @@ define(['jquery'], function($){
 
             this.zoomDiv.css(zoomStyle);
 
-            console.log("$zoomDiv: ", this.zoomDiv);
-
-
-            var parentImgSrc =$parentObj.find("img").attr("src");
-            console.log(parentImgSrc);
+            var parentImgSrc = $parentObj.find("img").attr("src");
             var $img = $("<img src='"+ parentImgSrc + "''>");
             this.imgEle = $img;
             $zoomDiv.append($img);
 
-            return $zoomDiv;
+
+            /*增加半透框滑块元素*/
+            var $mask = $("<div class='mask'></div>");
+            this.mask = $mask;
+            $mask.prependTo($parentObj);
+            /*var maskStyle = {
+                    "display": "block",
+                    "position": "absolute",
+                    "width": "200px",
+                    "height": "200px",
+                    "background": "black",
+                    "z-index": "100",
+                    "cursor": "move"
+            }
+
+            $mask.css(maskStyle);*/
+
+
+            return $(".mask");
         },
 
         /*删除预览div*/
         deleteZoomDiv: function(){
+            $(".mask").remove();
             $(".zoomDiv").remove();
             this.zoomDiv = null;
             this.imgEle = null;
@@ -107,19 +128,19 @@ define(['jquery'], function($){
                 $obj.css({"top": + eleH-jpH + "px"})
             }
 
-            console.log(this.cfg)
-
+            /*滑块和预览块的大小比例*/
             var scale = this.zoomDiv.width()/$obj.width();
 
+            /*给预览图片以比例设置长宽*/
             this.imgEle.css({
                 "position": "absolute",
                 "width": "calc(" + scale + " * " + eleW + "px)",
                 "height": "calc(" + scale + " * " + eleH + "px)"
             })
 
+            /*图片随鼠标位置进行相对位移*/
             var offX = $obj.position().left;
             var offY = $obj.position().top;
-            var scale = this.zoomDiv.width()/$obj.width();
             this.imgEle.css({"top": "-" + offY*scale + "px", "left": "-" + offX*scale + "px"});
 
         },
