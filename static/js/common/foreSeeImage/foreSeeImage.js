@@ -19,8 +19,7 @@ define(['jquery'], function($){
             var eleH = $parentObj.height();
             /*只支持显示在元素左边或者右边*/
             this.cfg = {
-                "height": eleH,
-                "width": eleH,
+                "wh": eleH,
                 "pos": "right",
                 "x": 5
             }
@@ -29,6 +28,31 @@ define(['jquery'], function($){
             var $zoomDiv = $("<div class='zoomDiv'></div>");
             this.zoomDiv = $zoomDiv;
             $zoomDiv.appendTo($parentObj);
+
+            var zoomStyle = {
+                "position": "absolute",
+                "overflow": "hidden",
+                "background": "white",
+                "display": "block",
+                "z-index": "999",
+                "height": this.cfg.wh + "px",
+                "width": this.cfg.wh + "px",
+                'top': 0
+            }
+            var pos = this.cfg.pos;
+            console.log("this.cfg.x: ", this.cfg.x)
+            if(pos == "left"){
+                zoomStyle["left"] = "-" + (this.cfg.wh + this.cfg.x) + "px";
+            } else if(pos == "right") {
+                zoomStyle["right"] = "-" + (this.cfg.wh + this.cfg.x) + "px";
+            } else{
+                zoomStyle["right"] = "-" + (this.cfg.wh + this.cfg.x) + "px";
+            }
+
+            this.zoomDiv.css(zoomStyle);
+
+            console.log("$zoomDiv: ", this.zoomDiv);
+
 
             var parentImgSrc =$parentObj.find("img").attr("src");
             console.log(parentImgSrc);
@@ -84,21 +108,6 @@ define(['jquery'], function($){
             }
 
             console.log(this.cfg)
-
-            var pos = this.cfg.pos;
-            this.zoomDiv.css({
-                "position": "absolute",
-                "overflow": "hidden",
-                "background": "transparent",
-                "display": "block",
-                "z-index": "999",
-                "height": this.cfg.height + "px",
-                "width": this.cfg.width + "px",
-                "right" : "-" + this.cfg.width+ "px",
-                'top': 0
-            })
-
-            console.log("$zoomDiv: ", this.zoomDiv);
 
             var scale = this.zoomDiv.width()/$obj.width();
 

@@ -14,7 +14,6 @@ require(['jquery', '../../common/foreSeeImage/foreSeeImage'], function($, fm){
     var fm = new fm.foreSeeImage();
     $(function(){
 
-        var $zoomDiv;
 
         $(".ListItem").hover(
 
@@ -22,16 +21,19 @@ require(['jquery', '../../common/foreSeeImage/foreSeeImage'], function($, fm){
                 $(".selDiv").show();
 
                 /*初始化一个预览容器，可以自定义样式*/
-                $zoomDiv = fm.initZoomDiv($(".ListItem"), {});
+                var $zoomDiv = fm.initZoomDiv($(".ListItem"), {"pos": "right", "wh": 600});
 
                 $(".ListItem").mousemove(function(){
 
+                    /*根据鼠标滚动来预览图片*/
                     fm.showForeImage($(".ListItem"), $(".selDiv"));
 
                 })
             },
             function(){
                 $(".selDiv").hide();
+
+                /*清除预览图片的容器*/
                 fm.deleteZoomDiv();
 
             }
