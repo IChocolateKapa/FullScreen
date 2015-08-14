@@ -14,9 +14,8 @@ define(['jquery'], function($){
             //var imgW = imgSection.eq(0).width();//不包含填充和边框， 不能这样求
             var imgW = $imgSection.eq(0).outerWidth();//包括填充和边框
 
-            //console.log(imgW)
             //页面宽度
-            var bodyW = $(".main-r").width();
+            var bodyW = $(".main-r-container").width();
             //console.log(bodyW)
             var cols = Math.floor(bodyW / imgW);
             $(".main-r-container").width(cols*imgW).css({"margin": "60px auto 0 auto"});
@@ -42,7 +41,7 @@ define(['jquery'], function($){
                 }
             })
 
-            console.log(hArr)
+            //console.log(hArr)
         },
         getMoreImg: function(){
             var imgObj = {};

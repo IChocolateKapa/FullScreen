@@ -1,0 +1,217 @@
+<!--实际应用中，一个for循环就可以搞定-->
+
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/0.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/1.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/2.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/3.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/4.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/5.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/6.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/7.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/8.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/9.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/10.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/11.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/12.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/13.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/14.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/15.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/16.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/17.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/18.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/19.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/20.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/21.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/22.jpg" alt="" />
+    </div>
+</div>
+<div class="section fl">
+    <div class="section-before"><i class="fa fa-user"></i></div>
+    <div class="pic">
+        <img src="../../static/images/23.jpg" alt="" />
+    </div>
+</div>
+
+<script>
+    require(['jquery', 'waterFallFunction', 'window'], function($, wf, wd){
+        new wf.wf().waterFall();
+
+        $(function(){
+            /*点击小人时，把当前图片加入购物车*/
+            $(".section-before").on("click", function(){
+                var $this = $(this);
+                var total = parseInt($(".tip").html());
+
+                if($this.hasClass("selected")){
+                    $this.removeClass("selected");
+                    $(".tip").html(total -1);
+                } else {
+                    if(total >= 2  || $(".section-before.selected").length >= 2){
+                        //new wd.window().alert("警告!", "已选择2个人，如果要更换，先删除之前的选择");
+                        /* new wd.window().alert("手机号", "18612552963", {
+                         "width": 400,
+                         "height": 120,
+                         "x": '50%',
+                         "y": '20%'
+                         }
+                         );*/
+                        //return false;
+                        alert("警告!已选择2个人，如果要更换，先删除之前的选择")
+                        flyAnimate($this, total);
+                        //window.localStorage("")
+                    }
+                }
+            })
+        })
+
+
+        function flyAnimate($this, total){
+            var $pic = $this.next("div");
+
+            $flyImg = $("<div class='flyImg'></div>");
+            var imgsrc = $pic.find("img").attr("src");
+            var $newImg = $("<img src='" + imgsrc + "' />");
+            $newImg.appendTo($flyImg);
+
+            $parentItem = $this.parent();
+            $flyImg.appendTo($parentItem);
+
+            /*获取鼠标相对于浏览器的偏移*/
+            var posX = event.pageX;
+            var posY = event.pageY;
+            /*右下购物车元素相对于浏览器的偏移*/
+            var eleOffTop = $(".tip").offset().top;
+            var eleOffLeft = $(".tip").offset().left;
+
+            var disY = Math.abs(eleOffTop - posY); //+ $(".switchBar").height()/2
+            var disX = Math.abs(eleOffLeft - posX) + $(".switchBar").width();
+
+            /*这样可以避免多个动画同时进行时，一个完成后所有动画都消失*/
+            var $thisFlyImg = $parentItem.find(".flyImg");
+
+            $thisFlyImg.animate({"top": "-15px"}, 300)
+                    .animate({"top": "15px"}, 200)
+                    .animate({"top": "-5px"}, 100)
+                    .animate({"top": "5px"}, 70)
+                    .animate({"top": "0"}, 100)
+                    .animate({"left": disX + "px", "top":  disY + "px"}, 1000, function(){
+                        $thisFlyImg.css({display:'none'}).remove();
+                        $(".tip").html(total + 1);
+                        $this.addClass("selected");
+                    })
+        }
+    })
+</script>

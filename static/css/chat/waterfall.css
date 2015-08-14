@@ -2,15 +2,32 @@
  * Created by Administrator on 2015/8/5.
  */
 @charset "utf-8";
+/*要想使一个divheight沾满浏览器的100%，必须要设置成绝对定位*/
+body{
+    background: #22c3aa;
+}
+.main{
+    width: 100%;
+    height: 100%;
+}
+.main-r{
+    width: 100%;
+    width: 84%;
+    /*height: 100%;*/
+    /*overflow: hidden;*/
+
+}
+.mt70{
+    margin-top: 70px;
+}
+.main-r-container{
+    height: auto;
+}
 
 .section{
     padding: 15px 0 0 15px;
-    /*padding: 15px;*/
     z-index: 10;
     position: relative;
-    /*background: white;*/
-    /*border-radius: 5px;*/
-    /*border: 1px springgreen solid;*/
 }
 
 .pic{
@@ -21,6 +38,12 @@
     cursor: pointer;
     background: white;
 }
+
+.pic img{
+    width: 240px;
+    height: auto;
+}
+
 .section-before{
     content: "选中";
     font-size: 12px;
@@ -28,7 +51,7 @@
     font-family: "Microsoft Yahei";
     color: #ffffff;
     position: absolute;
-    opacity: 0.3;
+    opacity: 0.2;
     width: 30px;
     height: 30px;
     line-height: 30px;
@@ -39,17 +62,16 @@
     transition: all .1s linear;
     -webkit-transition: all .1s linear;
     cursor: pointer;
+    z-index: 99;
 }
 .section:hover{
-    /*content: "";*/
-    /*width: 262px;*/
-    /*height: auto;*/
-    /*margin-top: 10px;*/
-    /*box-shadow: 0 0 100px 1000px rgba(0, 0, 0, .3);*/
-    /*transform: scale(1.5);*/
-    /*-webkit-transform: scale(1.5);*/
     z-index: 99;
-    /*position: absolute;*/
+}
+.section-before.selected{
+    opacity: 1;
+    /*color: #00b07b;*/
+    color: orangered;
+    background: #27877f;
 }
 .section:hover .section-before{
     opacity: 1;
@@ -60,10 +82,6 @@
     color: red;
 }
 
-.pic img{
-    width: 240px;
-    height: auto;
-}
 
 .fixedBar{
     z-index: 101;
@@ -115,4 +133,84 @@
 @-webkit-keyframes spark {
     from{top: 9px;}
     to{top: 5px;}
+}
+
+.flyImg{
+    top: 40px;
+    margin-top: -30px;
+    left: 200px;
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    z-index: 1000;
+    border: 1px solid white;
+}
+.flyImg img{
+    height: 60px;
+    width: 60px;
+}
+
+.fixedSideBar{
+    z-index: 100;
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    border-left: 1px solid #22c3aa;
+    cursor: pointer;
+    background: rgba(255, 255, 255, .9);
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+    transform-origin: bottom right;
+}
+.fixedSideBar>i{
+    display: block;
+    color: rgba(137, 154, 68, 1);
+    position: absolute;
+    right: 10px;
+    top: 70px;
+}
+.closed>i{
+    display: none;
+}
+.closed{
+    border-left: 1px solid transparent;
+    height: 50px;
+    width: 150px;
+    right: 0;
+    bottom: 0;
+}
+.closed .switchBar{
+    display: block;
+}
+.switchBar{
+    display: none;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    margin-left: -75px;
+    top: 50%;
+    margin-top: -25px;
+    background: white;
+    text-align: center;
+}
+.switchBar i{
+    color: rgba(137, 154, 68, 1);
+    line-height: 50px;
+    margin-right: 27px;
+}
+.tip{
+    position: absolute;
+    width: 27px;
+    background: rgba(137, 154, 68, 1);
+    border-radius: 50%;
+    line-height: 27px;
+    color: white;
+    right: 25px;
+    font-size: 10px;
+    font-family: "Microsoft Yahei";
+    top: 50%;
+    margin-top: -13.5px;
 }
