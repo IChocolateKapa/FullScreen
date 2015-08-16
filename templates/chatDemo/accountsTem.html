@@ -151,7 +151,7 @@
 
         $(function(){
             /*点击小人时，把当前图片加入购物车*/
-            $(".section-before").on("click", function(){
+            $(".section-before").click(function(){
                 var $this = $(this);
                 var total = parseInt($(".tip").html());
 
@@ -170,8 +170,10 @@
                          );*/
                         //return false;
                         alert("警告!已选择2个人，如果要更换，先删除之前的选择")
-                        flyAnimate($this, total);
+                        return false;
                         //window.localStorage("")
+                    } else{
+                        flyAnimate($this, total);
                     }
                 }
             })
