@@ -168,8 +168,13 @@ body{
     display: block;
     color: rgba(137, 154, 68, 1);
     position: absolute;
-    right: 10px;
+    right: -10px;
     top: 70px;
+}
+.fixedSideBar>i span{
+    line-height: 50px;
+    top: -5px;
+    left: -150px;
 }
 .closed>i{
     display: none;
@@ -207,4 +212,115 @@ body{
     right: 25px;
     top: 50%;
     margin-top: -13.5px;
+}
+
+.carContainer{
+    width: 100%;
+    padding:  10% 5px;
+    /*background: red;*/
+    height: 90%;
+    margin-top: 120px;
+    border-top: dotted 1px #999;
+}
+.carContainer li{
+    padding: 5px 5px;
+}
+.carContainer li a{
+    margin: auto;
+    display: block;
+    padding: 5px 10px;
+    background: rgba(137, 154, 68, .7);
+    width: 250px;
+    height: 220px;
+    border-radius: 50%;
+}
+.carContainer li a img{
+    height: 220px;
+    width: 250px;
+    border-radius: 50%;
+}
+
+.popup{
+    position: fixed;
+    width: 400px;
+    height: 480px;
+    left: 50%;
+    margin-left: -200px;
+    top: -60%;
+    margin-top: -300px;
+    transition: all .4s linear;
+    -webkit-transition: all .4s linear;
+    /*background: red;*/
+    background: rgba(255, 255, 255, 1);
+    border-radius: 6px;
+    box-shadow: 0 0 15px 15px rgba(99, 99, 99, .5);
+    padding: 10px;
+    z-index: 20000;
+}
+.popup.show{
+    top: 50%;
+    margin-top: -240px;
+}
+.popupContainer{
+    width: 80%;
+    left: 40%;
+    margin-left: -135px;
+    padding: 15px;
+}
+.popupItem{
+    /*height: 80px;*/
+    /*border-bottom: 1px dotted #999999;*/
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+.popupItem i{
+    color: #999999;
+    top: 3px;
+    right: 8px;
+}
+.popupItem i:hover{
+    color: #4E96F1;
+}
+.popupItem-l{
+    width: 25%;
+    line-height: 32px;
+}
+.popupItem-r{
+    width: 70%;
+    white-space: pre-line;
+    word-break: break-all;
+    word-wrap: break-word;
+    padding: 0 3px 10px 3px;
+    line-height: 100%;
+}
+span.popupItem-r{
+    line-height: 32px;
+}
+input.popupItem-r{
+    /*border: 1px solid #999999;*/
+    border: 1px solid rgba(99, 99, 99, .2);
+    line-height: 32px;
+    text-indent: 10px;
+    color: #999999;
+    padding: 0;
+}
+textarea.popupItem-r{
+    resize: none;
+    border: 1px solid rgba(99, 99, 99, .2);
+    line-height: 23px;
+}
+.save{
+    width: 100%;
+    margin: 10% auto;
+    cursor: pointer;
+}
+
+
+.bgdmask{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .3);
+    z-index: 19990;
+    display: none;
 }

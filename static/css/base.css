@@ -95,7 +95,7 @@ ul, ul li{
 .zoom{zoom: 1;}
 .inline{display: inline;}
 .hidden{visibility: hidden;}
-.none{display: none;}
+.none{display: none !important;}
 .inlineBlock{display: inline-block;}
 .block{display: block;}
 .outNone{outline: none;}
