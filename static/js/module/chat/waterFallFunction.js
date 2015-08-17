@@ -15,9 +15,11 @@ define(['jquery'], function($){
             var imgW = $imgSection.eq(0).outerWidth();//包括填充和边框
 
             //页面宽度
+            //var bodyW = $(".main-r").width();
             var bodyW = $(".main-r-container").width();
-            //console.log(bodyW)
+            console.log(bodyW)
             var cols = Math.floor(bodyW / imgW);
+            //$(".main-r").width(cols*imgW).css({"margin": "60px auto 0 auto"});
             $(".main-r-container").width(cols*imgW).css({"margin": "60px auto 0 auto"});
 
             console.log("cols: ", cols)
@@ -54,8 +56,8 @@ define(['jquery'], function($){
             }
 
             $(imgObj.imgList).each(function(index, ele){
-                //console.log("src: ", ele)
-                var sectionStr = "<div class=\"section fl\">"
+                //console.log("src: ", ele//实际生产过程中这些都是用模版来做
+                var sectionStr = "<div class=\"section fl\" data-src='" + ele.src + "'>"
                     + "<div class=\"section-before\"><i class=\"fa fa-user\"></i></div>"
                     + "<div class=\"pic\">"
                     + "<img src=\"../../static/images/" + ele.src + "\"/>"
@@ -79,6 +81,52 @@ define(['jquery'], function($){
             } else{
                 return false;
             }
+        },
+        /*加入购物车时动画效果*/
+        flyAnimate: function($this, total){
+            var $pic = $this.next("div");
+
+            $flyImg = $("<div class='flyImg'></div>");
+            var imgsrc = $pic.find("img").attr("src");
+            var $newImg = $("<img src='" + imgsrc + "' />");
+            $newImg.appendTo($flyImg);
+
+            $parentItem = $this.parent();
+            $flyImg.appendTo($parentItem);
+
+            /*获取鼠标相对于浏览器的偏移*/
+            var posX = event.pageX;
+            var posY = event.pageY;
+            /*右下购物车元素相对于浏览器的偏移*/
+            var eleOffTop = $(".tip").offset().top;
+            var eleOffLeft = $(".tip").offset().left;
+
+            var disY = Math.abs(eleOffTop - posY); //+ $(".switchBar").height()/2
+            var disX = Math.abs(eleOffLeft - posX) + $(".switchBar").width();
+
+            /*这样可以避免多个动画同时进行时，一个完成后所有动画都消失*/
+            var $thisFlyImg = $parentItem.find(".flyImg");
+
+            $thisFlyImg.animate({"top": "-15px"}, 300)
+                .animate({"top": "15px"}, 200)
+                .animate({"top": "-5px"}, 100)
+                .animate({"top": "5px"}, 70)
+                .animate({"top": "0"}, 100)
+                .animate({"left": disX + "px", "top":  disY + "px"}, 1000, function(){
+                    $thisFlyImg.css({display:'none'}).remove();
+                    $(".tip").html(total + 1);
+                    $this.addClass("selected");
+                })
+        },
+        /*获取json长度*/
+        getObjectLen: function(obj){
+            var j = 0;
+            for(var dd in obj){
+                if(obj[dd] != null){
+                    j += 1;
+                }
+            }
+            return j;
         }
     }
 
