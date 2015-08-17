@@ -1,0 +1,15 @@
+.container{
+    background: rgba(99, 99, 99, .2);
+}
+.main{
+    height: 80%;
+    background: white;
+    margin: 5% auto;
+}
+.main-content{
+    padding: 10px;
+    /*background: red;*/
+}
+.main-content-piece{
+
+}

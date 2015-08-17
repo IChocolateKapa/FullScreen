@@ -42,8 +42,13 @@ require(['jquery', 'jqueryui', 'waterFallFunction', 'window'], function($, jqu, 
                 $(".carContainer ul").html('');
                 for(var dd in jsval){
                     if(jsval[dd] != null){
+                        var index1 = jsval[dd].indexOf("+");
+                        if(index1 == -1){
+                            index1 = jsval[dd].length;
+                        }
                         j += 1;
-                        $(".carContainer ul").append("<li><a href=''><img src='../../static/images/" + jsval[dd] + ".jpg' /></a></li>")
+                        $(".carContainer ul").append("<li><a href=''><img src='../../static/images/"
+                            + jsval[dd].substring(0, index1) + ".jpg' /></a></li>")
                     }
                 }
             }
@@ -72,15 +77,60 @@ require(['jquery', 'jqueryui', 'waterFallFunction', 'window'], function($, jqu, 
             });*/
         $(".carContainer").on("click", "li", function(){
             /*动画结束之后开始设定身份*/
+            var $this = $(this);
             $(".bgdmask").show();
             $(".popup").addClass("show");
-            $(".popup").attr("data-item", $(this).children("img").attr("src"));
+
+            var dsrc = $(this).find("img").attr("src");
+            $(".popup").attr("data-item", dsrc);
+            var dsrc_s = dsrc.substring(20, dsrc.indexOf(".jpg"));
+
+            var pl = window.localStorage.peopleList;
+            var valjson = JSON.parse(pl);
+            var valstr = valjson[dsrc_s];
+            var index1 = valjson[dsrc_s].indexOf('+');
+            if(index1 != -1){
+                valstr = valstr.replace("+", "@");
+                var index2 = valstr.indexOf('+');
+                if(index2 != -1){
+                    var nick = valjson[dsrc_s].substring(index1+1,  index2);
+                    var desc = valjson[dsrc_s].substring(index2+1, valjson[dsrc_s].length);
+                } else {
+                    var nick = valjson[dsrc_s].substring(index1+1, valjson[dsrc_s].length);
+                    var desc = "";
+                }
+
+
+            } else{
+                var nick = "";
+                var desc = "";
+            }
+
+
+            $("input[name=nickname]").val(nick);
+            $("textarea").val(desc);
+            /*阻止默认行为*/
+            eventUtil.preventDefault(event);
         })
         $(".save").on("click", function(){
-            $(".bgdmask").hide();
-            $(".popup").removeClass("show");
+            var dsrc = $(".popup").attr("data-item");
+            var dsrc_s = dsrc.substring(20, dsrc.indexOf(".jpg"));
+
             var pl = window.localStorage.peopleList;
-            (JSON.parse(pl))
+            var nick = $("input[name=nickname]").val();
+            var desc = $("textarea").val();
+            if(!nick){
+                alert("请设置昵称哦!");
+                eventUtil.preventDefault(event);
+            } else {
+                var valjson = JSON.parse(pl);
+                var lastIndex = valjson[dsrc_s].indexOf("+") > 0 ? valjson[dsrc_s].indexOf("+") : valjson[dsrc_s].length;
+                valjson[dsrc_s] = valjson[dsrc_s].substring(0, lastIndex) + "+" + nick + "+" + desc;
+                window.localStorage.setItem("peopleList", JSON.stringify(valjson));
+                $(".bgdmask").hide();
+                $(".popup").removeClass("show");
+            }
+
         })
         $(".bgdmask").click(function(){
             $(".bgdmask").hide();

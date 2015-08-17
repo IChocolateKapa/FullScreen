@@ -222,6 +222,7 @@ body{
     margin-top: 120px;
     border-top: dotted 1px #999;
 }
+
 .carContainer li{
     padding: 5px 5px;
 }
@@ -314,7 +315,10 @@ textarea.popupItem-r{
     margin: 10% auto;
     cursor: pointer;
 }
-
+.talk{
+    width: 100%;
+    margin: 10px auto;
+}
 
 .bgdmask{
     position: fixed;
